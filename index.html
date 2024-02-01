@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Flag Project</title>
+  <style>
+    /* Write your CSS Code here */
+    
+    /* Red rectangle */
+    .flag 
+    {
+      height: 600px;
+      width: 900px;
+      background-color: #ce1126;
+      position: relative; /* so that child element can have position absolute */
+    
+      /*By setting this parent to relative, we're able to modify child elements in
+      relative to this parent - child elements will have position absolute   */
+    }
+    
+    /* Blue rectangle */
+    .flag > div
+    {
+      background-color: #002868;
+      width: 100%; /* width is 100% of its parent (flag class) */
+      height: 300px; /* half of the red color - 600px  */
+      position: absolute;
+      top: 150px; /* moving it from the top by a quarter of its parent (600px) */
+      
+      /* View it this way:
+      The red box is 600px, 
+      25% top is red, 25% bottom is red
+      Middle is BLUE at 50%  */
+    }
+    
+    /* White cicle */
+    .flag > div > div /* Didn't know you could target desecendant selectors like this using HTML tags w/o using specificity  */
+    {
+      background-color: white;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      position: relative; /* relative to its parent; blue rectangle */
+      top: 50px;
+      left: 350px; 
+      /* The 350px for left position explained:display:
+      900px (overall parent width) - 200px (overall circle width) = 700px
+      700px / 2 = 350px (to get it in the centre)  */
+    }
+
+    p
+    {
+      color: white;
+      text-align: center;
+      font-size: 5rem; /* 5rem gets the "of Laos" text same as goal.png */
+      margin-top: 0; /* because <p> elements are automatically given a margin which we do not need*/
+      /* The margin above helps place the circle bang in the middle without <p> margin affecting its spacing */
+    }
+
+    .flag div div  p /* This is a descendant selector - see how deep it goes to its specific descendant :)*/
+    {
+      color: black;
+      /* Alternatively, you could locate the selector by copying it from inspect tools.  */
+    }
+  </style>
+</head>
+
+<!-- 
+  IMPORTANT! Do not change any HTML
+Don't add any classes/ids/elements 
+Use what you know about combining selectors 
+and CSS specificity instead.
+Hint 1: The flag is 900px by 600px and the circle is 200px by 200px.
+Hint 2: You can use CSS inspection to get the colors from
+https://appbrewery.github.io/flag-of-laos/
+-->
+
+<body>
+  <div class="flag">
+    <p>The Flag</p>
+    <div>
+      <div>
+        <p>of Laos</p>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
